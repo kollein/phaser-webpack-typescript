@@ -4,13 +4,15 @@
   "description": "A simple Webpack 4 starter with TypeScript transpilation",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --profile --colors --watch --content-base src/ --mode development",
-    "build": "webpack --config webpack.config.js --mode production",
+    "start": "webpack-dev-server --inline --progress --profile --colors --watch --mode development",
+    "build": "webpack --config webpack.config.js --mode production && gulp",
     "build.prod": "webpack --config webpack.config.js -p",
     "build.esnext": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
-    "build.all": "npm run build.prod && npm run build.esnext"
+    "build.all": "npm run build.prod && npm run build.esnext",
+    "live": "http-server ./dist/ --port 3001 --cors",
+    "live:firebase": "gulp firebase && cd ./firebase && firebase deploy --only hosting:boomberman"
   },
   "license": "ISC",
   "devDependencies": {
@@ -20,20 +22,23 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
     "@babel/preset-env": "^7.4.1",
     "@babel/preset-typescript": "^7.3.3",
-    "@types/node": "7.0.0",
+    "@types/node": "^7.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "file-loader": "^6.0.0",
     "raw-loader": "^3.1.0",
-    "source-map-loader": "0.2.3",
+    "source-map-loader": "^0.2.3",
     "ts-loader": "^6.2.2",
-    "tslint": "^5.17.0",
-    "tslint-loader": "3.6.0",
-    "typescript": "3.5.1",
-    "webpack": "4.12.0",
-    "webpack-cli": "3.0.8",
-    "webpack-dev-server": "3.1.4"
+    "tslint": "^5.20.1",
+    "tslint-loader": "^3.6.0",
+    "typescript": "^3.5.1",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "phaser": "^3.17.0"
+    "firebase": "^7.13.2",
+    "gulp": "^4.0.2",
+    "phaser": "^3.22.0",
+    "rxjs": "^6.5.5"
   }
 }

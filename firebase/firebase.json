@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "boomberman",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

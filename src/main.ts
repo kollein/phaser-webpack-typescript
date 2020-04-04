@@ -1,19 +1,19 @@
 import 'phaser';
-import DefaultScene from './scenes/default';
+import WorldScene from './scenes/worldScene';
 
 const game = new Phaser.Game({
   // See <https://github.com/photonstorm/phaser/blob/master/src/boot/Config.js>
-  width: 800,
-  height: 600,
-  // zoom: 1,
-  // resolution: 1,
+  width: 480,
+  height: 450,
+  zoom: 2,
+  resolution: 1,
   type: Phaser.AUTO,
   // parent: null,
   // canvas: null,
   // canvasStyle: null,
   // seed: null,
   title: '☕️ Webpack with Phaser and TypeScript', // 'My Phaser 3 Game'
-  url: 'https://github.com/samme/brunch-phaser-typescript',
+  url: 'https://github.com/kollein/phaser-webpack-typescript',
   version: '0.0.1',
   // input: {
   //   keyboard: true,
@@ -49,10 +49,11 @@ const game = new Phaser.Game({
     default: 'arcade',
     arcade: {
       gravity: {
-        y: 180
-      }
+        y: 0
+      },
+      debug: true // set to true to view zones
     }
   },
-  scene: DefaultScene,
+  scene: [WorldScene],
 
 });

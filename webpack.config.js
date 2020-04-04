@@ -44,11 +44,11 @@ module.exports = {
         use: 'ts-loader'
       },
       {
-        test: /\.(gif|png|jpe?g|svg|xml)$/i,
+        test: /\.(gif|png|jpe?g|svg|xml|json)$/i,
         use: "file-loader"
       },
       {
-        test: [/\.vert$/, /\.frag$/],
+        test: [/\.vert$/, /\.json$/],
         use: "raw-loader"
       },
     ]
@@ -57,7 +57,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   plugins: [
     new CleanWebpackPlugin({
-      root: path.resolve(__dirname, "../")
+      root: path.resolve(DESTINATION)
     }),
     new webpack.DefinePlugin({
       CANVAS_RENDERER: JSON.stringify(true),
@@ -66,6 +66,7 @@ module.exports = {
   ],
   devServer: {
     compress: true,
+    contentBase: path.join(__dirname, 'src'),
     port: 9000
   },
 };
