@@ -54,6 +54,5 @@ const game = new Phaser.Game({
       debug: true // set to true to view zones
     }
   },
-  scene: [WorldScene],
-
+  scene: [WorldScene]
 });
